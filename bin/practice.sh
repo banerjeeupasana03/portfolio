@@ -7,7 +7,7 @@ read_names() {
   local name_field
   local line
   local array_names=()
-  local result  
+  local result
   local input_file_path="$ROOT_DIR/tmp/input.txt"
   result="$(cat $input_file_path | while read -r line; do
     name_field="$(echo "$line" | cut -d',' -f1 | tr ' ' '_')"
