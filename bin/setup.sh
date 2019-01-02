@@ -39,6 +39,7 @@ create_dir_structure() {
   mkdir -p "$ROOT_DIR/dist"
   touch "$ROOT_DIR/src/index.js"
   touch "$ROOT_DIR/dist/index.html"
+  touch "$ROOT_DIR/webpack.config.js"
   ok
 }
 
