@@ -34,12 +34,34 @@ install_webpack() {
   ok
 }
 
+create_dir_structure() {
+  mkdir -p "$ROOT_DIR/src"
+  mkdir -p "$ROOT_DIR/dist"
+  touch "$ROOT_DIR/src/index.js"
+  touch "$ROOT_DIR/dist/index.html"
+  ok
+}
+
+fix_package_json() {
+  sed -i -e 's#"main": "index.js"#"private": true#g;' "$ROOT_DIR/package.json"
+  ok
+}
+
+install_common_external_dependencies() {
+  npm install --save lodash
+  npm install --save jquery
+  ok
+}
+
 main() {
   local node_version="$1"
   echo ">>>>Setting up a javascript project<<<<"
   install_node "$node_version"
   init_project
   install_webpack
+  create_dir_structure
+  fix_package_json
+  install_common_external_dependencies
 }
 
 
